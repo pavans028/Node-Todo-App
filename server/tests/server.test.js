@@ -23,7 +23,7 @@ beforeEach((done) => {
   }).then(() => done());
 });
 
-// All post routes test cases
+// All post routes test cases under describe
 describe('POST /todos', () => {
   //new todo creation
   it('should create a new todo', (done) => {
@@ -66,6 +66,7 @@ describe('POST /todos', () => {
   });
 });
 
+// All GET routes test cases under describe
 describe('GET /todos', () => {
   // list all todos
   it('should get all todos', (done) => {
@@ -105,4 +106,36 @@ describe('GET /todos/:id', () => {
       .expect(404)
       .end(done);
   });
+});
+
+// All DELETE routes test cases under describe
+describe('DELETE /todos/:id',()=>{
+  it('should delete the todo', (done)=>{
+    var hexId = todos[1]._id.toHexString();
+    request(app)
+    .delete(`/todos/${hexId}`)
+    .expect(200)
+    .expect((res)=>{
+      expect(res.body.todos._id).toBe(hexId);
+    })
+    .end((err,res) =>{
+      if(err){
+        return done(err);
+      }
+      //find this particular test text
+      Todo.findById(hexId).then((todo) => {
+        expect(todo).toNotExist();
+        done();
+      }).catch((e) => done(e));      
+    })
+  });
+  
+  it('should return 404 for todo not found',(done)=>{
+      
+  });
+  
+  it('should return 404 if invalid ObjectIDs given', (done)=>{
+    
+  });
+  
 });

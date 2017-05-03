@@ -52,6 +52,7 @@ app.get('/todos/:id', (req, res) => {
   });
 });
 
+// delete a todo from DB
 app.delete('/todos/:id',(req, res)=>{
   var id= req.params.id;
   if(!ObjectID.isValid(id)){
@@ -61,7 +62,7 @@ app.delete('/todos/:id',(req, res)=>{
     if(!todo){
       res.status(404).send();
     }
-    res.send(todo);
+    res.send({todo});
   }).catch((e)=>{
     res.status(400).send();
   });
