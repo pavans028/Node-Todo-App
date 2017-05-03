@@ -4,8 +4,12 @@
   "description": "This app is created to demonstrate creating APIs using expressJS to interact with MongoDB, testing using Mocha/SuperTest and deploying it on Heroku and using version control Git.",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js"
     "test": "mocha server/**/*.test.js",
     "test-watch":"nodemon --exec 'npm test'"
+  },
+  "engines":{
+    "node":"6.10.3"
   },
   "keywords": [
     "node",
