@@ -1,0 +1,23 @@
+{
+  "name": "node-todo-api",
+  "version": "1.0.0",
+  "description": "This app is created to demonstrate creating APIs using expressJS to interact with MongoDB, testing using Mocha/SuperTest and deploying it on Heroku and using version control Git.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mocha",
+    "supertest",
+    "git",
+    "heroku",
+    "mongodb",
+    "restful",
+    "apis",
+    "JSON"
+  ],
+  "author": "Pavankumar Shetty",
+  "license": "ISC"
+}
