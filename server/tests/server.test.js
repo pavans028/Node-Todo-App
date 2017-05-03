@@ -116,7 +116,7 @@ describe('DELETE /todos/:id',()=>{
     .delete(`/todos/${hexId}`)
     .expect(200)
     .expect((res)=>{
-      expect(res.body.todos._id).toBe(hexId);
+      expect(res.body.todo._id).toBe(hexId);
     })
     .end((err,res) =>{
       if(err){
@@ -131,11 +131,18 @@ describe('DELETE /todos/:id',()=>{
   });
   
   it('should return 404 for todo not found',(done)=>{
-      
+      var hexId = new ObjectID().toHexString();
+      request(app)
+      .delete(`/todos/${hexId}`)
+      .expect(404)
+      .end(done);
   });
   
   it('should return 404 if invalid ObjectIDs given', (done)=>{
-    
+      request(app)
+      .delete(`/todos/dummyid`)
+      .expect(404)
+      .end(done);
   });
   
 });
